@@ -5,7 +5,7 @@ import Display from "./Display";
 test("The Display component that displays if the gate is open or closed & or if it is locked or unlocked", () => {
   const display = render(<Display />);
   expect(display.getByText(/open/i));
-  expect(display.getByText(/unlock/i));
+  expect(display.getByText(/unlocked/i));
 });
 
 test("The Display component that displays if the gate is closed, if closed prop is true", () => {
@@ -24,7 +24,7 @@ test("The Display component that displays if the gate is locked, if closed prop 
 });
 
 test("The Display component that displays if the gate is unlocked, if closed prop is false", () => {
-  const display = render(<Display locked={true} />);
+  const display = render(<Display locked={false} />);
   expect(display.getByText(/unlocked/i));
 });
 

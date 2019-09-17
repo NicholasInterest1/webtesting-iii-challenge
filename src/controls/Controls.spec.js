@@ -1,13 +1,13 @@
 import React from "react";
-import { render,fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Controls from "./Controls";
 
-test("Controls the Component that provides the btns the abilty to change between 'locked' & 'closed' states", () => {
+test("Controls the Component that provides the buttons the abilty to change between 'locked' & 'closed' states", () => {
     const { getAllByRole } = render(<Controls />);
-    getAllByRole('btn');
+    getAllByRole('button');
   });
   
-  test('Controls the component that changes the btn text to reflect the state of when unlocked is clicked', () => {
+  test('Controls the component that changes the button text to reflect the state of when unlocked is clicked', () => {
     const controls = render(<Controls locked={false} />);
   
     const closeGate = controls.getByText(/close gate/i);
@@ -19,7 +19,7 @@ test("Controls the Component that provides the btns the abilty to change between
     controls.findByText(/locked/i);
   });
   
-  test('Controls the component that changes the btn text to reflect the state of when locked is clicked', () => {
+  test('Controls the component that changes the button text to reflect the state of when locked is clicked', () => {
     const controls = render(<Controls locked={true} />);
   
     const unlockGate = controls.getByText(/unlock gate/i);
@@ -27,7 +27,7 @@ test("Controls the Component that provides the btns the abilty to change between
     controls.findByText(/unlocked/i);
   });
   
-  test('Controls the component that changes the btn text to reflect the state of when closed is clicked', () => {
+  test('Controls the component that changes the button text to reflect the state of when closed is clicked', () => {
     const controls = render(<Controls closed={true} />);
   
     const openGate = controls.getByText(/open gate/i);
@@ -35,14 +35,14 @@ test("Controls the Component that provides the btns the abilty to change between
     controls.findByText(/opened/i);
   });
   
-  test('Controls the component that disables the closed btn if the gate is locked', () => {
+  test('Controls the component that disables the closed button if the gate is locked', () => {
     const component = render(<Controls locked={true} closed={true} />);
-    const btn = component.getByText(/open gate/i);
-    expect(btn.disabled).toBe(true);
+    const button = component.getByText(/open gate/i);
+    expect(button.disabled).toBe(true);
   });
   
-  test('Controls the component that disables the locked btn if gate is open', () => {
+  test('Controls the component that disables the locked button if gate is open', () => {
     const component = render(<Controls locked={false} closed={false} />);
-    const btn = component.getByText(/lock gate/i);
-    expect(btn.disabled).toBe(true);
+    const button = component.getByText(/lock gate/i);
+    expect(button.disabled).toBe(true);
   });

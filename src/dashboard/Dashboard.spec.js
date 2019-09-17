@@ -19,8 +19,8 @@ test("The Gate can't be opened or closed when it is locked", () => {
     const control = render(<Controls locked={true} closed={true} />);
     expect(control.queryByText(/close gate/i)).toBe(null);
 
-    const btn = control.getByText(/open gate/i);
-    expect(btn.disabled).toBe(true);
+    const button = control.getByText(/open gate/i);
+    expect(button.disabled).toBe(true);
 })
 
 test("The dashboard has controls", () => {
